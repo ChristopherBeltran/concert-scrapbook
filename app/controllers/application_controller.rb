@@ -1,4 +1,7 @@
+require './config/environment'
+
 class ApplicationController < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
 
   configure do
     set :public_folder, 'public'
@@ -7,4 +10,11 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, 'password_security'
   end
-end 
+
+  get '/' do
+    erb :index
+  end
+
+
+
+end

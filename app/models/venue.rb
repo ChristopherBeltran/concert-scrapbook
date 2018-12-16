@@ -2,10 +2,6 @@ class Venue < ActiveRecord::Base
   has_many :concerts
   has_many :artists, through: :concerts
 
-
-  #need concert_id in venues table
-
-
   def slug
     title = self.name
     slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')

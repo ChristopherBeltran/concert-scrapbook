@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   validates_presence_of :username, :email, :password
+  validates :email, email: true
   has_many :concerts
 
   def slug
@@ -19,4 +20,5 @@ class User < ActiveRecord::Base
       end
     end
   end
+
 end

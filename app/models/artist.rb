@@ -2,8 +2,6 @@ class Artist < ActiveRecord::Base
   has_many :concerts
   has_many :venues, through: :concerts
 
-  #need concert_id in artists table
-
 
   def slug
     title = self.name
