@@ -58,7 +58,6 @@ class UsersController < ApplicationController
 
   get '/users/:slug' do
     @user = current_user
-    @concerts = @user.concerts
     erb :"/users/show"
   end
 
@@ -66,6 +65,17 @@ class UsersController < ApplicationController
 		  session.clear
 		  redirect '/login'
 	end
+
+  get '/myconcerts' do
+    if logged_in?
+      @user = current_user
+      @concerts = @user.concerts
+    else
+      redirect '/login'
+    end
+  end
+
+
 
 
 
