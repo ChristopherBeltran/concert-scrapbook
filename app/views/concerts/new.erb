@@ -1,0 +1,29 @@
+<section>
+  <% if flash.has?(:error) %>
+    <b><%= flash[:error] %></b>
+  <% end %>
+
+<h1>Create a new concert</h1>
+<br>
+<br>
+<form action="/new-concert" method="POST">
+  <label for="date"><b>Please Enter Date of Show:</b></label>
+  <input type="date" placeholder="mm/dd/yyyy" name="concert[date]" required>
+  <br>
+  <br>
+  <label for="artist"><b>Who was playing?</b></label>
+  <input type="text" placeholder="Artist name" name="artist[name]" required>
+  <br>
+  <label for="artist_genre"><b>What genre?</b></label>
+  <input type="text" placeholder="Genre" name="artist[genre]" required>
+  <br>
+  <br>
+  <label for="venue"><b>What was the name of the venue?</b></label>
+  <input type="text" placeholder="Venue name" name="venue[name]" required>
+  <br>
+  <label for="venue_location"><b>What city?</b></label>
+  <input type="text" placeholder="Venue city" name="venue[location]" required>
+  <br>
+  <br>
+  <button type="submit">Create Concert</button>
+  </form>

@@ -1,4 +1,5 @@
 class VenuesController < ApplicationController
+  use Rack::Flash
 
   get '/myvenues' do
     if logged_in?

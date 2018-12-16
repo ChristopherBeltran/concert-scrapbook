@@ -1,4 +1,5 @@
 class ArtistsContoller < ApplicationController
+  use Rack::Flash
 
   get '/myartists' do
     if logged_in?

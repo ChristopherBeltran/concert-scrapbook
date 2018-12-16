@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
@@ -13,6 +14,14 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     erb :index
+  end
+
+  def logged_in?
+    !!session[:user_id]
+  end
+
+  def current_user
+    User.find(session[:user_id])
   end
 
 
