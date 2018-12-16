@@ -66,29 +66,4 @@ class UsersController < ApplicationController
 		  redirect '/login'
 	end
 
-  get '/myconcerts' do
-    if logged_in?
-      @user = current_user
-      @concerts = @user.concerts
-    else
-      redirect '/login'
-    end
-  end
-
-
-
-
-
-
-
-    helpers do
-    		def logged_in?
-    			!!session[:user_id]
-    		end
-
-    		def current_user
-    			User.find(session[:user_id])
-    		end
-    	end
-
-    end
+end

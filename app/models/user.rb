@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   validates :email, email: true
   has_many :concerts
 
+  def logged_in?
+    !!session[:user_id]
+  end
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
   def slug
     title = self.username
     slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')

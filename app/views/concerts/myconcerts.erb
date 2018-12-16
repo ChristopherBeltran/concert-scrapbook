@@ -1,0 +1,18 @@
+<h1>My Concerts</h1>
+
+<% if @concerts.empty? %>
+<h3>You don't have any concerts yet! <a href="/new-concert">Create a new concert</a></h3>
+<% else
+  @concerts.each do |concert|
+%>
+
+<h5><%=concert.artist%> at the <%=concert.venue%> on <%=concert.date%></h5>
+<form action="/myartists/<%=concert.artist.slug%>">
+    <button type="submit">View Artist History</button>
+</form>
+<br>
+<form action="/myartists/<%=concert.venue.slug%>">
+    <button type="submit">View Venue History</button>
+</form>
+<%end%>
+<%end%>
