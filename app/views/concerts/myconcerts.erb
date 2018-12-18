@@ -19,5 +19,14 @@
 <form action="/myartists/<%=concert.venue.slug%>">
     <button type="submit">View Venue History</button>
 </form>
+<br>
+<form action="/myconcerts/<%=concert.id%>/edit">
+    <button type="submit">Edit Concert</button>
+</form>
+<br>
+<form method="POST" action="/myconcerts/<%=concert.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Concert">
+</form>
 <%end%>
 <%end%>

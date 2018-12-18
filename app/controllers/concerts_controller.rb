@@ -42,33 +42,34 @@ class ConcertsController < ApplicationController
 end
 
 get '/myconcerts/:id/edit' do
-  @concert = Concert.find_by(params[:id])
+  @concert = Concert.find_by(params)
   @artist = @concert.artist
   @venue = @concert.venue
   erb :"/concerts/edit"
 end
 
 patch '/myconcerts/:id' do
-  @concert = Concert.find_by(params[:id])
+  @concert = Concert.find_by(id: params[:id])
   @concert.update(params[:concert])
   @concert.artist = Artist.find_or_create_by(params[:artist])
   @concert.venue = Venue.find_or_create_by(params[:venue])
   @concert.save
   flash[:message] = "Successfully updated concert."
   redirect '/myconcerts'
-end 
+end
+
+delete '/myconcerts/:id/delete' do
+  @concert = Concert.find_by(id: params[:id])
+  @concert.delete
+  flash[:message] = "Successfully deleted concert."
+  redirect to '/myconcerts'
+end
 
 
-
-
-
-  #patch '/songs/:slug' do
-    #@song = Song.find_by_slug(params[:slug])
-    #@song.update(params[:song])
-    #@song.artist = Artist.find_or_create_by(params[:artist])
-      #@song.save
-    #flash[:message] = "Successfully updated song."
-  #redirect to("/songs/#{@song.slug}")
+#delete '/tweets/:id/delete' do #delete action
+    #@tweet = Tweet.find_by_id(params[:id])
+    #@tweet.delete
+    #redirect to '/tweets'
   #end
 
 
