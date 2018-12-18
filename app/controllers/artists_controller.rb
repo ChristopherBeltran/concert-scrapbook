@@ -5,9 +5,10 @@ class ArtistsContoller < ApplicationController
     if logged_in?
       @user = current_user
       @concerts = @user.concerts
-      @artists =[]
+      x =[]
       @concerts.each do |concert|
-        @artists << concert.artist
+        x << concert.artist
+        @artists = x.uniq
       end
       erb :"/artists/myartists"
     else
