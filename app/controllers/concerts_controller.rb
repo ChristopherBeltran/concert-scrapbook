@@ -40,4 +40,36 @@ class ConcertsController < ApplicationController
     redirect '/myconcerts'
   end
 end
+
+get '/myconcerts/:id/edit' do
+  @concert = Concert.find_by(params[:id])
+  @artist = @concert.artist
+  @venue = @concert.venue
+  erb :"/concerts/edit"
+end
+
+patch '/myconcerts/:id' do
+  @concert = Concert.find_by(params[:id])
+  @concert.update(params[:concert])
+  @concert.artist = Artist.find_or_create_by(params[:artist])
+  @concert.venue = Venue.find_or_create_by(params[:venue])
+  @concert.save
+  flash[:message] = "Successfully updated concert."
+  redirect '/myconcerts'
+end 
+
+
+
+
+
+  #patch '/songs/:slug' do
+    #@song = Song.find_by_slug(params[:slug])
+    #@song.update(params[:song])
+    #@song.artist = Artist.find_or_create_by(params[:artist])
+      #@song.save
+    #flash[:message] = "Successfully updated song."
+  #redirect to("/songs/#{@song.slug}")
+  #end
+
+
 end

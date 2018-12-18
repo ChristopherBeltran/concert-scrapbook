@@ -11,7 +11,7 @@
   @concerts.each do |concert|
 %>
 
-<h5><%=concert.artist.name%> at the <%=concert.venue.name%> on <%=concert.date%></h5>
+<h5><%=concert.artist.name%> at <%=concert.venue.name%> on <%=concert.date%></h5>
 <form action="/myartists/<%=concert.artist.slug%>">
     <button type="submit">View Artist History</button>
 </form>

@@ -1,0 +1,24 @@
+<h1>Update Concert</h1>
+
+<form action="/myconcerts/<%=@concert.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="date"><b>Edit date of Show:</b></label>
+  <input type="date" name="concert[date]" value="<%=@concert.date%>">
+  <br>
+  <br>
+  <label for="artist"><b>Edit artist:</b></label>
+  <input type="text" name="artist[name]" value="<%=@artist.name%>">
+  <br>
+  <label for="artist_genre"><b>Edit genre:</b></label>
+  <input type="text" name="artist[genre]" value="<%=@artist.genre%>">
+  <br>
+  <br>
+  <label for="venue"><b>Edit venue name:</b></label>
+  <input type="text" name="venue[name]" value="<%=@venue.name%>">
+  <br>
+  <label for="venue_location"><b>Edit venue location:</b></label>
+  <input type="text" name="venue[location]" value="<%=@venue.location%>">
+  <br>
+  <br>
+  <button type="submit">Update Concert</button>
