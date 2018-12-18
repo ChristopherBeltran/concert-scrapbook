@@ -66,11 +66,4 @@ delete '/myconcerts/:id/delete' do
 end
 
 
-#delete '/tweets/:id/delete' do #delete action
-    #@tweet = Tweet.find_by_id(params[:id])
-    #@tweet.delete
-    #redirect to '/tweets'
-  #end
-
-
 end
