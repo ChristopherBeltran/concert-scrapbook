@@ -5,9 +5,10 @@ class VenuesController < ApplicationController
     if logged_in?
       @user = current_user
       @concerts = @user.concerts
-      @venues =[]
+      x =[]
       @concerts.each do |concert|
-        @venues << concert.venue
+        x << concert.venue
+        @venues = x.uniq
       end
       erb :"/venues/myvenues"
     else
@@ -17,7 +18,14 @@ class VenuesController < ApplicationController
 
   get '/myvenues/:slug' do
   @venue = Venue.find_by_slug(params[:slug])
-  @concerts = @venue.concerts
+  @user = current_user
+  @concerts = @user.concerts
+  @venue_concerts = []
+  @concerts.each do |concert|
+    if concert.venue == @venue
+      @venue_concerts << concert
+    end
+  end 
   erb :"/venues/show"
 end
 
