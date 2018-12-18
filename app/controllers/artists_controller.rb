@@ -18,7 +18,14 @@ class ArtistsContoller < ApplicationController
 
   get '/myartists/:slug' do
   @artist = Artist.find_by_slug(params[:slug])
-  @concerts = @artist.concerts
+  @user = current_user
+  @concerts = @user.concerts
+  @artist_concerts = []
+  @concerts.each do |concert|
+    if concert.artist == @artist
+      @artist_concerts << concert
+    end
+  end
   erb :"/artists/show"
 end
 
