@@ -5,5 +5,8 @@
 @artists.each do |artist|
 %>
 <h5><%=artist.name%> - <%=artist.genre%></h5>
+<form action="/myartists/<%=artist.slug%>">
+    <button type="submit">View Artist History</button>
+</form>
 <%end%>
 <%end%>

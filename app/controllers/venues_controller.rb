@@ -15,5 +15,11 @@ class VenuesController < ApplicationController
     end
   end
 
+  get '/myvenues/:slug' do
+  @venue = Venue.find_by_slug(params[:slug])
+  @concerts = @venue.concerts
+  erb :"/venues/show"
+end
+
 
 end

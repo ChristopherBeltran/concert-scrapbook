@@ -6,8 +6,8 @@ end
 
 
 use Rack::MethodOverride
-#use ArtistsController
 use ConcertsController
 use VenuesController
 use UsersController
+use ArtistsContoller
 run ApplicationController

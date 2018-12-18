@@ -15,5 +15,11 @@ class ArtistsContoller < ApplicationController
     end
   end
 
+  get '/myartists/:slug' do
+  @artist = Artist.find_by_slug(params[:slug])
+  @concerts = @artist.concerts
+  erb :"/artists/show"
+end
+
 
 end

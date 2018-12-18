@@ -1,0 +1,6 @@
+<h1><%=@artist.name%> Concerts I've Attended</h1>
+
+
+<%@concerts.each do |concert|%>
+<h4><%=concert.date%> at the <%=concert.venue.name%></h4>
+<%end%>
