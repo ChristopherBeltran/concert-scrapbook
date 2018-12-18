@@ -6,7 +6,7 @@
 @venues.each do |venue|
 %>
 <h5><%=venue.name%> - <%=venue.location%></h5>
-<form action="/myartists/<%=venue.slug%>">
+<form action="/myvenues/<%=venue.slug%>">
     <button type="submit">View Venue History</button>
 </form>
 <%end%>
