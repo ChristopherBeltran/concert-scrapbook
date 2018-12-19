@@ -1,9 +1,9 @@
 <h1>Welcome, <%=@user.username%>!</h1>
-
-
+<br>
 <% if @concerts.empty? %>
 <h3>You don't have any concerts yet! <a href="/new-concert">Create a new concert</a></h3>
 <% else %>
+<p style="border:1px solid #ccc"></p>
 <form action="/myconcerts">
     <h4>Concerts I've attended</h4>
     <button type="submit">View Concerts</button>
@@ -13,11 +13,13 @@
     <h4>Artists I've Seen</h4>
     <button type="submit">View Artists</button>
 </form>
+<br>
 <form action="/myvenues">
     <h4>Venues I've Visited</h4>
     <button type="submit">View Venues</button>
 </form>
-
+<br>
+<p style="border:1px solid #ccc"></p>
 <form action="/new-concert">
     <button type="submit">Create A New Concert</button>
 </form>

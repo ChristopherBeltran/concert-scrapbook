@@ -1,6 +1,8 @@
 <h1><%=@artist.name%> Concerts I've Attended</h1>
 <br>
+<p style="border:1px solid #ccc"></p>
 <%@artist_concerts.each do |concert|%>
-<h4 style="border:1px solid #ccc"><%=concert.date%> at <%=concert.venue.name%></h4>
+<h4><%=concert.date%> at <%=concert.venue.name%></h4>
 <br>
+<p style="border:1px solid #ccc"></p>
 <%end%>

@@ -1,4 +1,6 @@
 <h1>My Artists</h1>
+<br>
+<p style="border:1px solid #ccc"></p>
 <% if @concerts.empty? %>
 <h3>You don't have any concerts yet! <a href="/new-concert">Create a new concert</a></h3>
 <% else
@@ -8,5 +10,6 @@
 <form action="/myartists/<%=artist.slug%>">
     <button type="submit">View Artist History</button>
 </form>
+<p style="border:1px solid #ccc"></p>
 <%end%>
 <%end%>
