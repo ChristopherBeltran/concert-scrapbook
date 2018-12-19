@@ -2,7 +2,7 @@ class ArtistsContoller < ApplicationController
   use Rack::Flash
 
   get '/myartists' do
-    if logged_in?
+    redirect_if_not_logged_in
       @user = current_user
       @concerts = @user.concerts
       x =[]
@@ -11,9 +11,6 @@ class ArtistsContoller < ApplicationController
         @artists = x.uniq
       end
       erb :"/artists/myartists"
-    else
-      redirect '/login'
-    end
   end
 
   get '/myartists/:slug' do
@@ -27,7 +24,7 @@ class ArtistsContoller < ApplicationController
           @artist_concerts << concert
         end
       end
-      if @artist_concerts.empty?
+      if @artist_concerts.empty?  #check in place to ensure that another user who is logged in cannot access this page
         redirect '/login'
       else
         erb :"/artists/show"
