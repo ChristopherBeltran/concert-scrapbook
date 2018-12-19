@@ -1,8 +1,8 @@
 <h1>Update Concert</h1>
 
-<form action="/myconcerts/<%=@concert.id%>" method="POST">
+<form action="/myconcerts/<%=@concert.id%>" method="POST" style="border:1px solid #ccc">
   <input id="hidden" type="hidden" name="_method" value="patch">
-
+  <br>
   <label for="date"><b>Edit date of Show:</b></label>
   <input type="date" name="concert[date]" value="<%=@concert.date%>" required>
   <br>

@@ -4,29 +4,37 @@
   <% end %>
 
 <h1>My Concerts</h1>
-
+<br>
 <% if @concerts.empty? %>
 <h3>You don't have any concerts yet! <a href="/new-concert">Create a new concert</a></h3>
 <% else
   @concerts.each do |concert|
 %>
 
-<h5><%=concert.artist.name%> at the <%=concert.venue.name%> on <%=concert.date%></h5>
+<h5 style="border:1px solid #ccc"><%=concert.artist.name%> at <%=concert.venue.name%> on <%=concert.date%></h5>
+<span style="display: inline-block; padding: 10px">
 <form action="/myartists/<%=concert.artist.slug%>">
     <button type="submit">View Artist History</button>
+
 </form>
-<br>
+</span>
+<span style="display: inline-block; padding: 10px">
 <form action="/myvenues/<%=concert.venue.slug%>">
     <button type="submit">View Venue History</button>
 </form>
-<br>
+</span>
+<span style="display: inline-block; padding: 10px">
 <form action="/myconcerts/<%=concert.id%>/edit">
     <button type="submit">Edit Concert</button>
 </form>
-<br>
+</span>
+<span style="display: inline-block; padding: 10px">
 <form method="POST" action="/myconcerts/<%=concert.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Concert">
 </form>
+</span>
+<p style="border:1px solid #ccc"></p>
+
 <%end%>
 <%end%>
