@@ -20,6 +20,7 @@ class ConcertsController < ApplicationController
   end
 
   post '/new-concert' do
+    if logged_in?
     @user = current_user
     @concert = Concert.find_by(params[:concert])
     if @concert && @concert.artist.name == params[:artist][:name] && @concert.venue.name == params[:venue][:name]
@@ -39,13 +40,20 @@ class ConcertsController < ApplicationController
     flash[:message] = "Concert successfully created!"
     redirect '/myconcerts'
   end
+else
+  redirect '/login'
+end
 end
 
 get '/myconcerts/:id/edit' do
   @concert = Concert.find_by(params)
+  if logged_in? && @concert.user_id == current_user.id
   @artist = @concert.artist
   @venue = @concert.venue
   erb :"/concerts/edit"
+else
+  redirect '/login'
+end
 end
 
 patch '/myconcerts/:id' do

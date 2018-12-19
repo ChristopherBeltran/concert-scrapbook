@@ -17,6 +17,7 @@ class VenuesController < ApplicationController
   end
 
   get '/myvenues/:slug' do
+    if logged_in?
   @venue = Venue.find_by_slug(params[:slug])
   @user = current_user
   @concerts = @user.concerts
@@ -25,9 +26,12 @@ class VenuesController < ApplicationController
     if concert.venue == @venue
       @venue_concerts << concert
     end
-  end 
+  end
   erb :"/venues/show"
+else
+  redirect '/login'
 end
+end 
 
 
 end

@@ -17,6 +17,7 @@ class ArtistsContoller < ApplicationController
   end
 
   get '/myartists/:slug' do
+    if logged_in?
   @artist = Artist.find_by_slug(params[:slug])
   @user = current_user
   @concerts = @user.concerts
@@ -27,6 +28,9 @@ class ArtistsContoller < ApplicationController
     end
   end
   erb :"/artists/show"
+else
+  redirect '/login'
+end 
 end
 
 
