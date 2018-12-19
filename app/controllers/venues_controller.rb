@@ -2,7 +2,7 @@ class VenuesController < ApplicationController
   use Rack::Flash
 
   get '/myvenues' do
-    if logged_in?
+    redirect_if_not_logged_in
       @user = current_user
       @concerts = @user.concerts
       x =[]
@@ -11,9 +11,6 @@ class VenuesController < ApplicationController
         @venues = x.uniq
       end
       erb :"/venues/myvenues"
-    else
-      redirect '/login'
-    end
   end
 
   get '/myvenues/:slug' do

@@ -56,13 +56,10 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-    if logged_in?
+    redirect_if_not_logged_in
     @user = current_user
     @concerts = @user.concerts
     erb :"/users/show"
-  else
-    redirect '/'
-  end
   end
 
   get '/logout' do
