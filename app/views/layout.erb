@@ -11,6 +11,47 @@
     <title>Concert Scrapbook</title>
   </head>
   <body>
+    <%if logged_in? %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Concert Scrapbook</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/users/<%=current_user.slug%>">Profile <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/myconcerts">My Concerts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/new-concert">Create New Concert</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <button type="button" <a href="/logout">Log Out</a></button>
+    </span>
+  </div>
+</nav>
+  <%else%>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand" href="/">Concert Scrapbook</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="/signup">Sign Up <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/login">Log In</a>
+    </li>
+    <ul>
+    </div>
+    </nav>
+    <%end%>
 
     <%= yield %>
     <!-- Optional JavaScript -->
