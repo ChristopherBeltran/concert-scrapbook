@@ -18,20 +18,22 @@ class ArtistsContoller < ApplicationController
 
   get '/myartists/:slug' do
     if logged_in?
-  @artist = Artist.find_by_slug(params[:slug])
-  @user = current_user
-  @concerts = @user.concerts
-  @artist_concerts = []
-  @concerts.each do |concert|
-    if concert.artist == @artist
-      @artist_concerts << concert
+      @artist = Artist.find_by_slug(params[:slug])
+      @user = current_user
+      @concerts = @user.concerts
+      @artist_concerts = []
+      @concerts.each do |concert|
+        if concert.artist == @artist
+          @artist_concerts << concert
+        end
+      end
+      if @artist_concerts.empty?
+        redirect '/login'
+      else
+        erb :"/artists/show"
+      end
     end
-  end
-  erb :"/artists/show"
-else
-  redirect '/login'
-end 
-end
+  end 
 
 
 end
