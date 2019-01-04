@@ -58,9 +58,13 @@ class UsersController < ApplicationController
   get '/users/:slug' do
     redirect_if_not_logged_in
     @user = current_user
+    if @user != User.find_by_slug(params[:slug])
+      redirect :"/users/#{@user.slug}"
+    else
     @concerts = @user.concerts
     erb :"/users/show"
   end
+end
 
   get '/logout' do
 		  session.clear
