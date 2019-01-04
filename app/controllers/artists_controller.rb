@@ -8,7 +8,7 @@ class ArtistsContoller < ApplicationController
       x =[]
       @concerts.each do |concert|
         x << concert.artist
-        @artists = x.uniq
+        @artists = x.uniq  #check in place to ensure that there are no duplicate artists displayed on the page
       end
       erb :"/artists/myartists"
   end

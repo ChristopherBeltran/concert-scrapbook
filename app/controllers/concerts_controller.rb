@@ -53,19 +53,27 @@ end
 
 patch '/myconcerts/:id' do
   @concert = Concert.find_by(id: params[:id])
+  if @concert && @concert.user_id == current_user.id
   @concert.update(params[:concert])
   @concert.artist = Artist.find_or_create_by(params[:artist])
   @concert.venue = Venue.find_or_create_by(params[:venue])
   @concert.save
   flash[:message] = "Successfully updated concert."
   redirect '/myconcerts'
+else
+  redirect '/'
+end
 end
 
 delete '/myconcerts/:id/delete' do
   @concert = Concert.find_by(id: params[:id])
+  if @concert && @concert.user_id == current_user.id
   @concert.delete
   flash[:message] = "Successfully deleted concert."
   redirect to '/myconcerts'
+else
+  redirect '/'
+end 
 end
 
 

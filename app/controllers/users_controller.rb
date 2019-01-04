@@ -27,6 +27,11 @@ class UsersController < ApplicationController
         User.exists?(email: params[:email])
         flash[:error] = "Email already in use, please log in to account."
         redirect '/login'
+      elsif
+        params[:username] = "" || params[:email] = "" || params[:password] = ""
+          flash[:error] = "Fields cannot be blank."
+          redirect '/login' 
+
     else
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
         @user.save
