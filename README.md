@@ -1,11 +1,13 @@
 # Concert Scrapbook
 
-ConcertScrapbook provides the user with a Sinatra based web application that allows the user to log all of the concerts that they have attended along with details about each concert.
+ConcertScrapbook is a basic MVC application that utilizes the Sintra framework with a Postgres DB.  
 
 ## Usage
 
 To use this app, just clone, run `rake db:migrate` and then run `shotgun`.
 Everything should be set up.
+
+Also,currently hosted on Heroku https://concert-scrapbook.herokuapp.com/login.
 
 
 ## Contributing
